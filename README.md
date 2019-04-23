@@ -8,7 +8,7 @@ The inspiration for the mechanics of this game comes from the [Undyne Fight](htt
 
 Undyne Fight:
 
-![](https://cdn.discordapp.com/attachments/293513409293713409/570272413829300234/unknown.png)
+![](https://cdn.discordapp.com/attachments/293513409293713409/570275267558375427/unknown.png)
 
 Super Hexagon:
 
