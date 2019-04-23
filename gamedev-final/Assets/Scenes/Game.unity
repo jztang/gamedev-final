@@ -474,6 +474,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd6d26cd35e52674e95c5a1f6ffee3c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arrowPrefab: {fileID: 5027109206878346202, guid: a816bdd72a402364a98455dc43027168,
+    type: 3}
 --- !u!4 &1877180653
 Transform:
   m_ObjectHideFlags: 0
