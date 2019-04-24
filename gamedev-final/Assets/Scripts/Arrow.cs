@@ -4,28 +4,27 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour {
 	private Vector3 startPos;
-	private Vector3 endPos = new Vector3(0f, 0f, -2f);
+	private Vector3 endPos = new Vector3(0f, 0f, 0f);
 	private float startTime;
 	private float journeyLength;
-
-	public float speed = 1f;
-
-    private void Start() {
-        
-    }
+    private bool shoot = false;
+	private float speed;
+    public int direction; // 1 = up, 2 = down, 3 = left, 4 = right
 
     private void Update() {
-        float distCovered = (Time.time - startTime) * speed;
-        float fracJourney = distCovered / journeyLength;
-        transform.position = Vector3.Lerp(startPos, endPos, fracJourney);
+        if(shoot) {
+            float distCovered = (Time.time - startTime) * speed;
+            float fracJourney = distCovered / journeyLength;
+            transform.position = Vector3.Lerp(startPos, endPos, fracJourney);
+        }
     }
 
-    public void spawnUp() {
-    	transform.position = new Vector3(0f, 6f, -2f);
-        transform.eulerAngles = new Vector3(0f, 0f, 270f);
-    }
-
-    public void shootArrow() {
-
+    public void ShootArrow(float speed, int direction) {
+        this.speed = speed;
+        this.direction = direction;
+        startPos = transform.position;
+        startTime = Time.time;
+        journeyLength = Vector3.Distance(startPos, endPos);
+        shoot = true;
     }
 }
