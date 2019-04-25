@@ -33,4 +33,18 @@ public class Paddle : MonoBehaviour {
             heart.GetComponent<Heart>().direction = 3;
         }
     }
+
+    public void Hit() {
+        GetComponent<SpriteRenderer>().color = Color.green;
+        Invoke("Reset", 0.15f);
+    }
+
+    public void Miss() {
+        GetComponent<SpriteRenderer>().color = Color.red;
+        Invoke("Reset", 0.15f);
+    }
+
+    private void Reset() {
+        GetComponent<SpriteRenderer>().color = Color.white;
+    }
 }
