@@ -18,19 +18,19 @@ public class Paddle : MonoBehaviour {
         if(Input.GetKeyDown("up")) {
         	transform.position = paddleUpPos;
         	transform.eulerAngles = paddleUpRot;
-            heart.GetComponent<Heart>().direction = 1;
+            heart.GetComponent<Heart>().direction = 0;
         } else if(Input.GetKeyDown("down")) {
         	transform.position = paddleDownPos;
         	transform.eulerAngles = paddleDownRot;
-            heart.GetComponent<Heart>().direction = 2;
+            heart.GetComponent<Heart>().direction = 1;
         } else if(Input.GetKeyDown("left")) {
         	transform.position = paddleLeftPos;
         	transform.eulerAngles = paddleLeftRot;
-            heart.GetComponent<Heart>().direction = 3;
+            heart.GetComponent<Heart>().direction = 2;
         } else if(Input.GetKeyDown("right")) {
         	transform.position = paddleRightPos;
         	transform.eulerAngles = paddleRightRot;
-            heart.GetComponent<Heart>().direction = 4;
+            heart.GetComponent<Heart>().direction = 3;
         }
     }
 }

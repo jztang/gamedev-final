@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Heart : MonoBehaviour {
-    public int direction; // 1 = up, 2 = down, 3 = left, 4 = right
+    public int direction; // 0 = up, 1 = down, 2 = left, 3 = right
 
     private void Start() {
         direction = 1;

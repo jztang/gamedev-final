@@ -215,9 +215,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.026798725}
   serializedVersion: 2
-  m_Radius: 5.33
+  m_Radius: 4.8744206
 --- !u!114 &226188609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,6 +459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 8145294275816059990, guid: a816bdd72a402364a98455dc43027168,
     type: 3}
+  bpm: 0.5
 --- !u!4 &1877180653
 Transform:
   m_ObjectHideFlags: 0

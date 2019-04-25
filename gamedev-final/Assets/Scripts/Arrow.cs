@@ -9,7 +9,7 @@ public class Arrow : MonoBehaviour {
 	private float journeyLength;
     private bool shoot = false;
 	private float speed;
-    public int direction; // 1 = up, 2 = down, 3 = left, 4 = right
+    public int direction; // 0 = up, 1 = down, 2 = left, 3 = right
 
     private void Update() {
         if(shoot) {
