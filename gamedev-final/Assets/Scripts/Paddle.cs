@@ -15,19 +15,19 @@ public class Paddle : MonoBehaviour {
     public GameObject heart;
 
     private void Update() {
-        if(Input.GetKeyDown("up")) {
+        if(Input.GetKeyDown("up") || Input.GetKeyDown("w")) {
         	transform.position = paddleUpPos;
         	transform.eulerAngles = paddleUpRot;
             heart.GetComponent<Heart>().direction = 0;
-        } else if(Input.GetKeyDown("down")) {
+        } else if(Input.GetKeyDown("down") || Input.GetKeyDown("s")) {
         	transform.position = paddleDownPos;
         	transform.eulerAngles = paddleDownRot;
             heart.GetComponent<Heart>().direction = 1;
-        } else if(Input.GetKeyDown("left")) {
+        } else if(Input.GetKeyDown("left") || Input.GetKeyDown("a")) {
         	transform.position = paddleLeftPos;
         	transform.eulerAngles = paddleLeftRot;
             heart.GetComponent<Heart>().direction = 2;
-        } else if(Input.GetKeyDown("right")) {
+        } else if(Input.GetKeyDown("right") || Input.GetKeyDown("d")) {
         	transform.position = paddleRightPos;
         	transform.eulerAngles = paddleRightRot;
             heart.GetComponent<Heart>().direction = 3;
