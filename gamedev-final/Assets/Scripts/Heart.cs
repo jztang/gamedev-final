@@ -1,8 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Heart : MonoBehaviour {
+    public GameObject text;
+    private int numBeats = 0;
+
+    public GameObject arrowSpawner;
     public GameObject paddle;
     public int direction; // 0 = up, 1 = down, 2 = left, 3 = right
 
@@ -19,5 +24,12 @@ public class Heart : MonoBehaviour {
             paddle.GetComponent<Paddle>().Miss();
         }
         Destroy(other.gameObject);
+
+        numBeats++;
+        text.GetComponent<Text>().text = "" + numBeats;
+
+        if(numBeats == 533) {
+            arrowSpawner.GetComponent<ArrowSpawner>().StopArrows();
+        }
     }
 }
