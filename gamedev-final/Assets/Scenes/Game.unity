@@ -808,7 +808,7 @@ MonoBehaviour:
   arrowPrefab: {fileID: 8145294275816059990, guid: a816bdd72a402364a98455dc43027168,
     type: 3}
   arrowSpeed: 7
-  startDelay: 7.5
+  startDelay: 7.275
   bpm: 128
   song: {fileID: 8300000, guid: c5b0bebd5da6b3d42ac94e90091f491a, type: 3}
 --- !u!4 &1877180653

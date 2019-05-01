@@ -28,7 +28,7 @@ public class Heart : MonoBehaviour {
         numBeats++;
         text.GetComponent<Text>().text = "" + numBeats;
 
-        if(numBeats == 533) {
+        if(numBeats == 529) {
             arrowSpawner.GetComponent<ArrowSpawner>().StopArrows();
         }
     }
