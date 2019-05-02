@@ -77,6 +77,7 @@ public class Heart : MonoBehaviour {
                 curHealth = totalHealth;
             }
             streak++;
+        	score += 10 * streak;
         } else {
             Debug.Log("miss");
             paddle.GetComponent<Paddle>().Miss();
@@ -87,7 +88,6 @@ public class Heart : MonoBehaviour {
             }
             streak = 1;
         }
-        score += 10 * streak;
         other.GetComponent<Arrow>().ArrowHit();
 
         numBeats++;
