@@ -8,15 +8,13 @@ public class ArrowSpawner : MonoBehaviour {
     public float startDelay;
     public float bpm;
 
-    public AudioClip song;
-
     private Vector3[] spawnPos = {new Vector3(0.1f, 6f, 1f), new Vector3(0.1f, -6f, 1f), 
                                   new Vector3(-6f, 0f, 1f), new Vector3(6f, 0f, 1f)};
     private Vector3[] spawnRot = {new Vector3(0f, 0f, 180f), new Vector3(0f, 0f, 0f),
                                   new Vector3(0f, 0f, 270f), new Vector3(0f, 0f, 90f)};
 
     private void Start() {
-        GetComponent<AudioSource>().PlayOneShot(song, 0.2f);
+        GetComponent<AudioSource>().Play();
         InvokeRepeating("StartArrows", startDelay, bpmToFreq(bpm));
     }
 
