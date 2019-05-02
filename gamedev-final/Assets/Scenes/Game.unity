@@ -331,6 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 65918368}
+  totalBeats: 441
   arrowSpawner: {fileID: 1877180651}
   paddle: {fileID: 476119873}
   direction: 0
@@ -808,9 +809,9 @@ MonoBehaviour:
   arrowPrefab: {fileID: 8145294275816059990, guid: a816bdd72a402364a98455dc43027168,
     type: 3}
   arrowSpeed: 7
-  startDelay: 7.275
-  bpm: 128
-  song: {fileID: 8300000, guid: c5b0bebd5da6b3d42ac94e90091f491a, type: 3}
+  startDelay: 5.5
+  bpm: 155
+  song: {fileID: 8300000, guid: f10302c61f64f6e4dbc024ed65422290, type: 3}
 --- !u!4 &1877180653
 Transform:
   m_ObjectHideFlags: 0

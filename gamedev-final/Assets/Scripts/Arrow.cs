@@ -11,6 +11,8 @@ public class Arrow : MonoBehaviour {
 	private float speed;
     public int direction; // 0 = up, 1 = down, 2 = left, 3 = right
 
+    public GameObject arrowAnim;
+
     private void Update() {
         if(shoot) {
             float distCovered = (Time.time - startTime) * speed;
@@ -26,5 +28,12 @@ public class Arrow : MonoBehaviour {
         startTime = Time.time;
         journeyLength = Vector3.Distance(startPos, endPos);
         shoot = true;
+    }
+
+    public void ArrowHit() {
+        shoot = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+        arrowAnim.GetComponent<SpriteRenderer>().enabled = true;
+        arrowAnim.GetComponent<Animator>().Play("arrow_hit", 0, 0);
     }
 }

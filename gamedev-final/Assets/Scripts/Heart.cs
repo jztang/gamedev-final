@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Heart : MonoBehaviour {
     public GameObject text;
     private int numBeats = 0;
+    public int totalBeats;
 
     public GameObject arrowSpawner;
     public GameObject paddle;
@@ -23,12 +24,12 @@ public class Heart : MonoBehaviour {
             Debug.Log("miss");
             paddle.GetComponent<Paddle>().Miss();
         }
-        Destroy(other.gameObject);
+        other.GetComponent<Arrow>().ArrowHit();
 
         numBeats++;
         text.GetComponent<Text>().text = "" + numBeats;
 
-        if(numBeats == 529) {
+        if(numBeats == totalBeats - 1) {
             arrowSpawner.GetComponent<ArrowSpawner>().StopArrows();
         }
     }
