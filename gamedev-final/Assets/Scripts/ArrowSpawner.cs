@@ -16,7 +16,7 @@ public class ArrowSpawner : MonoBehaviour {
                                   new Vector3(0f, 0f, 270f), new Vector3(0f, 0f, 90f)};
 
     private void Start() {
-        GetComponent<AudioSource>().PlayOneShot(song, 1f);
+        GetComponent<AudioSource>().PlayOneShot(song, 0.2f);
         InvokeRepeating("StartArrows", startDelay, bpmToFreq(bpm));
     }
 
