@@ -487,6 +487,7 @@ MonoBehaviour:
   paddle: {fileID: 476119873}
   direction: 0
   song: {fileID: 1877180654}
+  reset: {fileID: 8300000, guid: 53623d5b327d6b745818d3b4df367a66, type: 3}
   endMenu: {fileID: 21786069}
   endScore: {fileID: 2086171277}
   healthBar: {fileID: 1420612337}

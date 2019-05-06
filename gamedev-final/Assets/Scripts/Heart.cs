@@ -14,6 +14,7 @@ public class Heart : MonoBehaviour {
     public int direction = 1; // 0 = up, 1 = down, 2 = left, 3 = right
 
     public AudioSource song;
+    //public AudioClip reset;
     public GameObject endMenu;
     public Text endScore;
     private bool gameOver = false;
@@ -53,14 +54,16 @@ public class Heart : MonoBehaviour {
 
         if(gameOver) {
             if(Input.GetKeyDown("return")) {
-                switch(GameInfo.menuIndex) {
+                //song.clip = reset;
+                /*switch(GameInfo.menuIndex) {
                     case 0:
                         SceneManager.LoadScene("Normal");
                         break;
                     case 1:
                         SceneManager.LoadScene("Hard");
                         break;
-                }
+                }*/
+                SceneManager.LoadScene("Reset");
             } else if(Input.GetKeyDown("escape")) {
                 SceneManager.LoadScene("MainMenu");
             }
