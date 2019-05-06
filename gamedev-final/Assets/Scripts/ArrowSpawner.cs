@@ -16,6 +16,7 @@ public class ArrowSpawner : MonoBehaviour {
     private void Start() {
         GetComponent<AudioSource>().Play();
         InvokeRepeating("StartArrows", startDelay, bpmToFreq(bpm));
+        Debug.Log("Start");
     }
 
     private float bpmToFreq(float bpm) { // beats per minute -> seconds per arrow
