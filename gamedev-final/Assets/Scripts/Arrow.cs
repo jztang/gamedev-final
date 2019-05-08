@@ -36,4 +36,8 @@ public class Arrow : MonoBehaviour {
         arrowAnim.GetComponent<SpriteRenderer>().enabled = true;
         arrowAnim.GetComponent<Animator>().Play("arrow_hit", 0, 0);
     }
+
+    public void ArrowStop() {
+        shoot = false;
+    }
 }

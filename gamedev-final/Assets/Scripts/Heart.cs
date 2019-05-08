@@ -19,6 +19,7 @@ public class Heart : MonoBehaviour {
     public GameObject endMenu;
     public Text endScore;
     private bool gameOver = false;
+    private bool endPause = false;
 
     public Slider healthBar;
     public Slider streakBar;
@@ -44,19 +45,19 @@ public class Heart : MonoBehaviour {
         scoreText.text = score + "";
         streakText.text = streak + "x";
 
-        if(!gameOver) {
+        if(!gameOver && !endPause) {
             if(Input.GetKeyDown("z")) {
                 Time.timeScale = 0;
                 song.Pause();
             } else if(Input.GetKeyDown("x")) {
                 Time.timeScale = 1;
                 song.UnPause();
-            } else if(/*Input.GetKeyDown("escape") ||*/ curHealth == 0) {
+            } else if(Input.GetKeyDown("escape")) {
                 EndRun();
             }
         }
 
-        if(gameOver) {
+        if(gameOver && !endPause) {
             if(Input.GetKeyDown("return")) {
                 //song.clip = reset;
                 /*switch(GameInfo.menuIndex) {
@@ -93,17 +94,25 @@ public class Heart : MonoBehaviour {
         	score += 25 * streak;
         } else {
             Debug.Log("miss");
-            paddle.GetComponent<Paddle>().Miss();
 
             curHealth -= 5;
             if(curHealth < 0) {
                 curHealth = 0;
             }
+
+            if(curHealth > 0) {
+                paddle.GetComponent<Paddle>().Miss();
+            }
             streak = 1;
             subStreak = 0;
         }
-        other.GetComponent<Arrow>().ArrowHit();
-        GetComponent<Animator>().Play("heartbeat", 0, 0);
+
+        if(curHealth == 0) {
+            EndRun();
+        } else {
+            other.GetComponent<Arrow>().ArrowHit();
+            GetComponent<Animator>().Play("heartbeat", 0, 0);
+        }
 
         numBeats++;
         text.GetComponent<Text>().text = "" + numBeats;
@@ -115,14 +124,20 @@ public class Heart : MonoBehaviour {
     }
 
     private void EndRun() {
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         song.Stop();
-        ShowEndMenu();
-        //Invoke("ShowEndMenu", 1f);
+        arrowSpawner.GetComponent<ArrowSpawner>().StopArrows();
+        foreach(GameObject arrowObj in GameObject.FindGameObjectsWithTag("Arrow")) {
+            arrowObj.GetComponent<Arrow>().ArrowStop();
+        }
+        //ShowEndMenu();
+        endPause = true;
+        Invoke("ShowEndMenu", 1f);
     }
 
     private void ShowEndMenu() {
         gameOver = true;
+        endPause = false;
         endMenu.SetActive(true);
         endScore.text = "SCORE: " + score;
     }
