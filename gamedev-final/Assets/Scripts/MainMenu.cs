@@ -14,10 +14,14 @@ public class MainMenu : MonoBehaviour {
     private Vector3 paddleRightPos = new Vector3(0.616f, -0.005f, 0f);
     private Vector3 paddleRightRot = new Vector3(0f, 0f, 270f);
 
+    public AudioClip menuStart;
+    public AudioClip menuSelect;
+
     public Text difficultyText;
 
     private void Start() {
         GetMenu();
+        GetComponent<AudioSource>().PlayOneShot(menuStart, 1f);
     }
 
     private void Update() {
@@ -30,13 +34,21 @@ public class MainMenu : MonoBehaviour {
         } else if(Input.GetKeyDown("left") || Input.GetKeyDown("a")) {
             transform.position = paddleLeftPos;
             transform.eulerAngles = paddleLeftRot;
-            if(GameInfo.menuIndex > 0) GameInfo.menuIndex--;
-            GetMenu();
+
+            if(GameInfo.menuIndex > 0) {
+                GameInfo.menuIndex--;
+                GetComponent<AudioSource>().PlayOneShot(menuSelect, 1f);
+                GetMenu();
+            }
         } else if(Input.GetKeyDown("right") || Input.GetKeyDown("d")) {
             transform.position = paddleRightPos;
             transform.eulerAngles = paddleRightRot;
-            if(GameInfo.menuIndex < 1) GameInfo.menuIndex++;
-            GetMenu();
+
+            if(GameInfo.menuIndex < 1) {
+                GameInfo.menuIndex++;
+                GetComponent<AudioSource>().PlayOneShot(menuSelect, 1f);
+                GetMenu();
+            }
         } else if(Input.GetKeyDown("return")) {
             switch(GameInfo.menuIndex) {
                 case 0:

@@ -16,6 +16,9 @@ public class Heart : MonoBehaviour {
     public string difficulty;
     public AudioSource song;
     //public AudioClip reset;
+    public AudioClip startSound;
+    public AudioClip hitSound;
+    public AudioClip missSound;
     //public GameObject heartAnim;
     public GameObject endMenu;
     public Text yourScore;
@@ -37,6 +40,7 @@ public class Heart : MonoBehaviour {
 
     private void Start() {
         Time.timeScale = 1;
+        GetComponent<AudioSource>().PlayOneShot(startSound, 1f);
         //direction = 1;
         //totalHealth = 30;
         //curHealth = totalHealth;
@@ -57,6 +61,7 @@ public class Heart : MonoBehaviour {
                 song.UnPause();
             } else if(Input.GetKeyDown("escape")) {
                 EndRun();
+                GetComponent<AudioSource>().PlayOneShot(missSound, 1f);
             }
         }
 
@@ -82,6 +87,7 @@ public class Heart : MonoBehaviour {
         if(other.GetComponent<Arrow>().direction == direction) {
             Debug.Log("hit");
             //paddle.GetComponent<Paddle>().Hit();
+            GetComponent<AudioSource>().PlayOneShot(hitSound, 1f);
 
             curHealth++;
             subStreak++;
@@ -97,6 +103,7 @@ public class Heart : MonoBehaviour {
         	score += 25 * streak;
         } else {
             Debug.Log("miss");
+            GetComponent<AudioSource>().PlayOneShot(missSound, 1f);
 
             curHealth -= 5;
             if(curHealth < 0) {
