@@ -13,11 +13,14 @@ public class Heart : MonoBehaviour {
     public GameObject paddle;
     public int direction = 1; // 0 = up, 1 = down, 2 = left, 3 = right
 
+    public string difficulty;
     public AudioSource song;
     //public AudioClip reset;
     //public GameObject heartAnim;
     public GameObject endMenu;
-    public Text endScore;
+    public Text yourScore;
+    public Text highScore;  
+    public Text newHighScore;
     private bool gameOver = false;
     private bool endPause = false;
 
@@ -138,7 +141,12 @@ public class Heart : MonoBehaviour {
     private void ShowEndMenu() {
         gameOver = true;
         endPause = false;
+        yourScore.text = score + "";
+        if(score > PlayerPrefs.GetInt(difficulty, 0)) {
+            PlayerPrefs.SetInt(difficulty, score);
+            newHighScore.enabled = true;
+        }
+        highScore.text = PlayerPrefs.GetInt(difficulty, 0) + "";
         endMenu.SetActive(true);
-        endScore.text = "SCORE: " + score;
     }
 }
