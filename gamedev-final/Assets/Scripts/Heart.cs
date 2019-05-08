@@ -20,6 +20,7 @@ public class Heart : MonoBehaviour {
     private bool gameOver = false;
 
     public Slider healthBar;
+    public Slider streakBar;
     private float curHealth = 20;
     private float totalHealth = 30;
 
@@ -27,6 +28,7 @@ public class Heart : MonoBehaviour {
     public Text streakText;
     private int score = 0;
     private int streak = 1;
+    private int subStreak = 0;
 
     private void Start() {
         Time.timeScale = 1;
@@ -37,6 +39,7 @@ public class Heart : MonoBehaviour {
 
     private void Update() {
         healthBar.value = curHealth / totalHealth;
+        streakBar.value = subStreak / 10f;
         scoreText.text = "SCORE: " + score;
         streakText.text = "STREAK: " + streak + "x";
 
@@ -76,11 +79,17 @@ public class Heart : MonoBehaviour {
             paddle.GetComponent<Paddle>().Hit();
 
             curHealth++;
+            subStreak++;
             if(curHealth > totalHealth) {
                 curHealth = totalHealth;
             }
-            streak++;
-        	score += 10 * streak;
+            if(subStreak == 10 && streak < 4) {
+                streak++;
+            }
+            if(subStreak == 11 && streak < 4) {
+                subStreak = 1;
+            }
+        	score += 25 * streak;
         } else {
             Debug.Log("miss");
             paddle.GetComponent<Paddle>().Miss();
@@ -90,6 +99,7 @@ public class Heart : MonoBehaviour {
                 curHealth = 0;
             }
             streak = 1;
+            subStreak = 0;
         }
         other.GetComponent<Arrow>().ArrowHit();
 

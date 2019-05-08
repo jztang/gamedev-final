@@ -114,8 +114,8 @@ PlayerSettings:
   vulkanEnableSetSRGBWrite: 0
   m_SupportedAspectRatios:
     4:3: 0
-    5:4: 1
-    16:10: 0
+    5:4: 0
+    16:10: 1
     16:9: 0
     Others: 0
   bundleVersion: 0.1
