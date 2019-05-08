@@ -41,8 +41,8 @@ public class Heart : MonoBehaviour {
     private void Update() {
         healthBar.value = curHealth / totalHealth;
         streakBar.value = subStreak / 10f;
-        scoreText.text = "SCORE: " + score;
-        streakText.text = "STREAK: " + streak + "x";
+        scoreText.text = score + "";
+        streakText.text = streak + "x";
 
         if(!gameOver) {
             if(Input.GetKeyDown("z")) {
