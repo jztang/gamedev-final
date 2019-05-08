@@ -15,6 +15,7 @@ public class Heart : MonoBehaviour {
 
     public AudioSource song;
     //public AudioClip reset;
+    //public GameObject heartAnim;
     public GameObject endMenu;
     public Text endScore;
     private bool gameOver = false;
@@ -76,7 +77,7 @@ public class Heart : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.GetComponent<Arrow>().direction == direction) {
             Debug.Log("hit");
-            paddle.GetComponent<Paddle>().Hit();
+            //paddle.GetComponent<Paddle>().Hit();
 
             curHealth++;
             subStreak++;
@@ -102,6 +103,7 @@ public class Heart : MonoBehaviour {
             subStreak = 0;
         }
         other.GetComponent<Arrow>().ArrowHit();
+        GetComponent<Animator>().Play("heartbeat", 0, 0);
 
         numBeats++;
         text.GetComponent<Text>().text = "" + numBeats;
