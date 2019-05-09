@@ -7,6 +7,7 @@ public class StartScreen : MonoBehaviour {
     private void Start() {
         GameInfo.menuIndex = 0;
         Cursor.visible = false;
+        PlayerPrefs.SetInt("Invincible", 0);
     }
 
     private void Update() {
@@ -21,6 +22,8 @@ public class StartScreen : MonoBehaviour {
             PlayerPrefs.SetInt("Normal", 0);
             PlayerPrefs.SetInt("Hard", 0);
             PlayerPrefs.SetInt("Undying", 0);
+        } else if(Input.GetKeyDown("i")) {
+            PlayerPrefs.SetInt("Invincible", 1);
         } else if(Input.anyKey) {
             SceneManager.LoadScene("MainMenu");
         }
