@@ -117,19 +117,19 @@ public class Heart : MonoBehaviour {
             subStreak = 0;
         }
 
-        if(curHealth == 0) {
-            EndRun();
-        } else {
+        //if(curHealth == 0) {
+            //EndRun();
+        //} else {
             other.GetComponent<Arrow>().ArrowHit();
             GetComponent<Animator>().Play("heartbeat", 0, 0);
-        }
+        //}
 
         numBeats++;
         text.GetComponent<Text>().text = "" + numBeats;
 
         if(numBeats == totalBeats - 1) {
             arrowSpawner.GetComponent<ArrowSpawner>().StopArrows();
-            Invoke("ShowEndMenu", 0.75f);
+            Invoke("ShowEndMenu", 2f);
         }
     }
 

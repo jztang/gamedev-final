@@ -16,6 +16,11 @@ public class StartScreen : MonoBehaviour {
             #else
                 Application.Quit();
             #endif
+        } else if(Input.GetKeyDown("r")) {
+            PlayerPrefs.SetInt("Easy", 0);
+            PlayerPrefs.SetInt("Normal", 0);
+            PlayerPrefs.SetInt("Hard", 0);
+            PlayerPrefs.SetInt("Undying", 0);
         } else if(Input.anyKey) {
             SceneManager.LoadScene("MainMenu");
         }

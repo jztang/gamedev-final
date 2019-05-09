@@ -44,7 +44,7 @@ public class MainMenu : MonoBehaviour {
             transform.position = paddleRightPos;
             transform.eulerAngles = paddleRightRot;
 
-            if(GameInfo.menuIndex < 1) {
+            if(GameInfo.menuIndex < 4) {
                 GameInfo.menuIndex++;
                 GetComponent<AudioSource>().PlayOneShot(menuSelect, 1f);
                 GetMenu();
@@ -52,10 +52,16 @@ public class MainMenu : MonoBehaviour {
         } else if(Input.GetKeyDown("return")) {
             switch(GameInfo.menuIndex) {
                 case 0:
-                    SceneManager.LoadScene("Normal");
+                    SceneManager.LoadScene("Easy");
                     break;
                 case 1:
+                    SceneManager.LoadScene("Normal");
+                    break;
+                case 2:
                     SceneManager.LoadScene("Hard");
+                    break;
+                case 3:
+                    SceneManager.LoadScene("Undying");
                     break;
             }
         } else if(Input.GetKeyDown("escape")) {
@@ -66,11 +72,26 @@ public class MainMenu : MonoBehaviour {
     private void GetMenu() {
         switch(GameInfo.menuIndex) {
             case 0:
-                difficultyText.text = "NORMAL";
+                difficultyText.text = "EASY";
                 break;
             case 1:
+                difficultyText.text = "NORMAL";
+                break;
+            case 2:
                 difficultyText.text = "HARD";
                 break;
-        }
+            case 3:
+                difficultyText.text = "UNDYING";
+                break;
+            case 4:
+                // credits
+                difficultyText.enabled = false;
+                // enable/setactive credits
+                break;
+            default:
+                difficultyText.enabled = true;
+                // enable/setactive credits
+                break;
+            }
     }
 }
