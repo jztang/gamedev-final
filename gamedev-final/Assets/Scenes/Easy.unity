@@ -2205,7 +2205,7 @@ MonoBehaviour:
   arrowPrefab: {fileID: 8145294275816059990, guid: a816bdd72a402364a98455dc43027168,
     type: 3}
   arrowSpeed: 5
-  startDelay: 5.4
+  startDelay: 5
   bpm: 110
 --- !u!4 &1877180653
 Transform:
@@ -2231,7 +2231,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 627155ab1684ee04db40e255eb5fc318, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1097489a4acbaea44bd1b0147e8672b0, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.15
   m_Pitch: 1

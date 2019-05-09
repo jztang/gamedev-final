@@ -117,7 +117,7 @@ public class Heart : MonoBehaviour {
             subStreak = 0;
         }
 
-        if(curHealth == 0) {
+        if(curHealth == 0 && PlayerPrefs.GetInt("Invincible", 0) == 0) {
             EndRun();
         } else {
             other.GetComponent<Arrow>().ArrowHit();
