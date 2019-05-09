@@ -17,7 +17,22 @@ public class MainMenu : MonoBehaviour {
     public AudioClip menuStart;
     public AudioClip menuSelect;
 
+    public Camera mainCamera;
+    public SpriteRenderer heartSpriteRend;
+
     public Text difficultyText;
+    public Text scoreText;
+    public GameObject credits;
+    public GameObject screenFilter;
+
+    public SpriteRenderer bgSpriteRend;
+    public Sprite bgEasy;
+    public Sprite bgNormal;
+    public Sprite bgHard;
+    public Sprite bgUndying;
+
+    public GameObject arrowLeft;
+    public GameObject arrowRight;
 
     private void Start() {
         GetMenu();
@@ -70,28 +85,50 @@ public class MainMenu : MonoBehaviour {
     }
 
     private void GetMenu() {
+        difficultyText.enabled = true;
+        scoreText.enabled = true;
+        arrowLeft.SetActive(true);
+        arrowRight.SetActive(true);
+        credits.SetActive(false);
+        screenFilter.SetActive(false);
+
         switch(GameInfo.menuIndex) {
             case 0:
+                mainCamera.backgroundColor = new Color(0.6719f, 0.7734f, 0.8828f, 1f);
+                heartSpriteRend.color = new Color(0.3516f, 0.5703f, 0.7969f, 1f);
                 difficultyText.text = "EASY";
+                scoreText.text = "BEST: " + PlayerPrefs.GetInt("Easy", 0);
+                bgSpriteRend.sprite = bgEasy;
+                arrowLeft.SetActive(false);
                 break;
             case 1:
+                mainCamera.backgroundColor = new Color(0.8555f, 0.5508f, 0.7578f, 1f);
+                heartSpriteRend.color = new Color(0.7422f, 0.4297f, 0.6406f, 1f);
                 difficultyText.text = "NORMAL";
+                scoreText.text = "BEST: " + PlayerPrefs.GetInt("Normal", 0);
+                bgSpriteRend.sprite = bgNormal;
                 break;
             case 2:
+                mainCamera.backgroundColor = new Color(0.9102f, 0.6602f, 0.625f, 1f);
+                heartSpriteRend.color = new Color(0.8588f, 0.4941f, 0.4431f, 1f);
                 difficultyText.text = "HARD";
+                scoreText.text = "BEST: " + PlayerPrefs.GetInt("Hard", 0);
+                bgSpriteRend.sprite = bgHard;
                 break;
             case 3:
+                mainCamera.backgroundColor = new Color(0.8828f, 0.8828f, 0.8828f, 1f);
+                heartSpriteRend.color = new Color(0.2549f, 0.2549f, 0.2549f, 1f);
                 difficultyText.text = "UNDYING";
+                scoreText.text = "BEST: " + PlayerPrefs.GetInt("Undying", 0);
+                bgSpriteRend.sprite = bgUndying;
                 break;
             case 4:
-                // credits
                 difficultyText.enabled = false;
-                // enable/setactive credits
+                scoreText.enabled = false;
+                arrowRight.SetActive(false);
+                credits.SetActive(true);
+                screenFilter.SetActive(true);
                 break;
-            default:
-                difficultyText.enabled = true;
-                // enable/setactive credits
-                break;
-            }
+        }
     }
 }

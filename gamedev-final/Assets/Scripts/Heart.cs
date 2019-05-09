@@ -117,12 +117,12 @@ public class Heart : MonoBehaviour {
             subStreak = 0;
         }
 
-        //if(curHealth == 0) {
-            //EndRun();
-        //} else {
+        if(curHealth == 0) {
+            EndRun();
+        } else {
             other.GetComponent<Arrow>().ArrowHit();
             GetComponent<Animator>().Play("heartbeat", 0, 0);
-        //}
+        }
 
         numBeats++;
         text.GetComponent<Text>().text = "" + numBeats;
