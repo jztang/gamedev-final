@@ -1,1 +1,0 @@
-arrow_anim.png,153,89,16
