@@ -1,21 +1,11 @@
-# Intro to Gamedev - Final Game
+One page reflection on your design intentions and the merits of your game.
 
-[Insert game name here] is an arcade-action game with pseudo rhythm elements. The player controls a paddle that is anchored to the center of screen. The paddle moves in a fixed circle around the center. Arrows come in from all sides of the screen, and the player must rotate the paddle to block the arrows. If an arrow gets past the player, it’s game over. The pseudo rhythm element comes into play with the arrows – they will come in at a rate that matches the BPM of the music. The music is going to be electronic, which is usually the case in the arcade-action genre.
+# Undying Beats
 
-The goal of the game is to survive as long as you can. The game will time how long the player survives, and also record the high score. I plan to have 2-3 difficulties, which means a different soundtrack for each difficulty. Harder difficulties would essentially have arrows coming in at a faster rate.
+Undying Beats was intended to be an arcade-action game with pseudo rhythm elements. Inspired by part of the [Undyne Fight](https://www.youtube.com/watch?v=LSmt92xQ5g8) in Undertale, the goal was to have an endless game, where the goal was simply to survive the onslaught of arrows as long as possible. This proved to be out of my current skillset, as seamlessly looping a song, while also keeping the BPM consistent, is pretty difficult. Instead of the endless idea, I opted for a score-based system like Guitar Hero, where hitting more notes in a row multiplies your score.
 
-The inspiration for the mechanics of this game comes from the [Undyne Fight](https://www.youtube.com/watch?v=LSmt92xQ5g8) in Undertale. The inspiration for visuals and overall game feel comes from [Super Hexagon](https://store.steampowered.com/app/221640/Super_Hexagon/) and [RFLEX](https://store.steampowered.com/app/392020/RFLEX/), which are both arcade-action games that I play a lot. The art is abstract and uses simple shapes, but the games still feel very slick thanks to the “juice”.
+Because it was part rhythm game, the timing of the music and arrows needed to be precise. This problem of timing was the most challenging part of making this game. I didn't know how to make beat maps that truly synced up with the song, so I had to manually configure the timing. I did this by setting a delay such that the arrows spawned at the right time to match the beat. However, I learned that this delay needed to be different for different computers. My desktop computer loaded the music slightly faster than my laptop, but there was enough of a difference that a delay that worked for one computer felt off for the other.
 
-Undyne Fight:
+When it did work, it was very satisfying to play. I also had 4 difficulties, so there was a sufficient level of challenge for anyone that wanted it. Although I definitely could have added more, I am pretty happy with the visual juice that was included in the game (the arrows "breaking", and the heart beating to the song). One of the parts of the game that I thought was executed well was the menus. Navigating it is easy, seamless, and satisfying. 
 
-![](https://cdn.discordapp.com/attachments/293513409293713409/570275267558375427/unknown.png)
-
-Super Hexagon:
-
-![](https://steamcdn-a.akamaihd.net/steam/apps/221640/ss_534dfe48501ce998f65340db88698fca6aef82c1.600x338.jpg?t=1555981214)
-
-RFLEX:
-
-![](https://steamcdn-a.akamaihd.net/steam/apps/392020/ss_9cedb41da6d9bdf7f4f7207357f8bd21b94890ff.600x338.jpg?t=1464659760)
-
-The progress for the game is tracked in my [Trello](https://trello.com/b/tIyqKsnu/gamedev-final).
+If I could do something different, I probably would've researched a way to make it a true rhythm game: notes have to be hit at the right time (not too early or too late), and a dynamic beatmap that changes depending on the part of the song (more than just BPM). This would allow for more variety in gameplay.
