@@ -1,5 +1,3 @@
-One page reflection on your design intentions and the merits of your game.
-
 # Undying Beats
 
 Undying Beats was intended to be an arcade-action game with pseudo rhythm elements. Inspired by part of the [Undyne Fight](https://www.youtube.com/watch?v=LSmt92xQ5g8) in Undertale, the goal was to have an endless game, where the goal was simply to survive the onslaught of arrows as long as possible. This proved to be out of my current skillset, as seamlessly looping a song, while also keeping the BPM consistent, is pretty difficult. Instead of the endless idea, I opted for a score-based system like Guitar Hero, where hitting more notes in a row multiplies your score.
