@@ -34,17 +34,17 @@ public class Paddle : MonoBehaviour {
         }
     }
 
-    public void Hit() {
+    public void Hit() { // Flash green on a hit
         GetComponent<SpriteRenderer>().color = Color.green;
         Invoke("Reset", 0.25f);
     }
 
-    public void Miss() {
+    public void Miss() { // Flash red on a miss
         GetComponent<SpriteRenderer>().color = Color.red;
         Invoke("Reset", 0.25f);
     }
 
-    private void Reset() {
+    private void Reset() { // Return paddle to its normal color
         GetComponent<SpriteRenderer>().color = Color.white;
     }
 }

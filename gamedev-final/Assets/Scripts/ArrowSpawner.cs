@@ -19,10 +19,12 @@ public class ArrowSpawner : MonoBehaviour {
         Debug.Log("Start");
     }
 
-    private float bpmToFreq(float bpm) { // beats per minute -> seconds per arrow
+    // Convert beats per minute to seconds per arrow
+    private float bpmToFreq(float bpm) {
         return 1f / (bpm / 60f);
     }
 
+    // Randomly spawn and shoot an arrow from 1 of 4 directions
     private void StartArrows() {
         GameObject arrow = Instantiate(arrowPrefab);
         int dir = Random.Range(0, 4);

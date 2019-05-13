@@ -40,6 +40,7 @@ public class MainMenu : MonoBehaviour {
     }
 
     private void Update() {
+        // Player input
         if(Input.GetKeyDown("up") || Input.GetKeyDown("w")) {
             transform.position = paddleUpPos;
             transform.eulerAngles = paddleUpRot;
@@ -64,7 +65,7 @@ public class MainMenu : MonoBehaviour {
                 GetComponent<AudioSource>().PlayOneShot(menuSelect, 1f);
                 GetMenu();
             }
-        } else if(Input.GetKeyDown("return")) {
+        } else if(Input.GetKeyDown("return")) { // Difficulty selected + start
             switch(GameInfo.menuIndex) {
                 case 0:
                     SceneManager.LoadScene("Easy");
@@ -79,11 +80,12 @@ public class MainMenu : MonoBehaviour {
                     SceneManager.LoadScene("Undying");
                     break;
             }
-        } else if(Input.GetKeyDown("escape")) {
+        } else if(Input.GetKeyDown("escape")) { // Back to start screen
             SceneManager.LoadScene("StartScreen");
         }
     }
 
+    // Set the UI of the menu depending on the menuIndex
     private void GetMenu() {
         difficultyText.enabled = true;
         scoreText.enabled = true;
@@ -93,7 +95,7 @@ public class MainMenu : MonoBehaviour {
         screenFilter.SetActive(false);
 
         switch(GameInfo.menuIndex) {
-            case 0:
+            case 0: // Easy
                 mainCamera.backgroundColor = new Color(0.6719f, 0.7734f, 0.8828f, 1f);
                 heartSpriteRend.color = new Color(0.3516f, 0.5703f, 0.7969f, 1f);
                 difficultyText.text = "EASY";
@@ -101,28 +103,28 @@ public class MainMenu : MonoBehaviour {
                 bgSpriteRend.sprite = bgEasy;
                 arrowLeft.SetActive(false);
                 break;
-            case 1:
+            case 1: // Normal
                 mainCamera.backgroundColor = new Color(0.8555f, 0.5508f, 0.7578f, 1f);
                 heartSpriteRend.color = new Color(0.7422f, 0.4297f, 0.6406f, 1f);
                 difficultyText.text = "NORMAL";
                 scoreText.text = "BEST: " + PlayerPrefs.GetInt("Normal", 0);
                 bgSpriteRend.sprite = bgNormal;
                 break;
-            case 2:
+            case 2: // Hard
                 mainCamera.backgroundColor = new Color(0.9102f, 0.6602f, 0.625f, 1f);
                 heartSpriteRend.color = new Color(0.8588f, 0.4941f, 0.4431f, 1f);
                 difficultyText.text = "HARD";
                 scoreText.text = "BEST: " + PlayerPrefs.GetInt("Hard", 0);
                 bgSpriteRend.sprite = bgHard;
                 break;
-            case 3:
+            case 3: // Undying
                 mainCamera.backgroundColor = new Color(0.8828f, 0.8828f, 0.8828f, 1f);
                 heartSpriteRend.color = new Color(0.2549f, 0.2549f, 0.2549f, 1f);
                 difficultyText.text = "UNDYING";
                 scoreText.text = "BEST: " + PlayerPrefs.GetInt("Undying", 0);
                 bgSpriteRend.sprite = bgUndying;
                 break;
-            case 4:
+            case 4: // Credits
                 difficultyText.enabled = false;
                 scoreText.enabled = false;
                 arrowRight.SetActive(false);

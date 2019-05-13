@@ -14,6 +14,7 @@ public class Arrow : MonoBehaviour {
     public GameObject arrowAnim;
 
     private void Update() {
+        // Lerp to the center of the heart
         if(shoot) {
             float distCovered = (Time.time - startTime) * speed;
             float fracJourney = distCovered / journeyLength;
@@ -21,6 +22,7 @@ public class Arrow : MonoBehaviour {
         }
     }
 
+    // Start shooting the arrow
     public void ShootArrow(float speed, int direction) {
         this.speed = speed;
         this.direction = direction;
@@ -30,6 +32,7 @@ public class Arrow : MonoBehaviour {
         shoot = true;
     }
 
+    // Arrow has hit the heart
     public void ArrowHit() {
         shoot = false;
         GetComponent<SpriteRenderer>().enabled = false;

@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Heart : MonoBehaviour {
     public GameObject text;
-    private int numBeats = 0;
-    public int totalBeats;
+    private int numBeats = 0; // Number of beats played in the current song
+    public int totalBeats; // Total number of beats in the song
 
     public GameObject arrowSpawner;
     public GameObject paddle;
@@ -15,11 +15,9 @@ public class Heart : MonoBehaviour {
 
     public string difficulty;
     public AudioSource song;
-    //public AudioClip reset;
     public AudioClip startSound;
     public AudioClip hitSound;
     public AudioClip missSound;
-    //public GameObject heartAnim;
     public GameObject endMenu;
     public Text yourScore;
     public Text highScore;  
@@ -41,9 +39,6 @@ public class Heart : MonoBehaviour {
     private void Start() {
         Time.timeScale = 1;
         GetComponent<AudioSource>().PlayOneShot(startSound, 1f);
-        //direction = 1;
-        //totalHealth = 30;
-        //curHealth = totalHealth;
     }
 
     private void Update() {
@@ -53,40 +48,30 @@ public class Heart : MonoBehaviour {
         streakText.text = streak + "x";
 
         if(!gameOver && !endPause) {
-            if(Input.GetKeyDown("z")) {
+            if(Input.GetKeyDown("z")) { // Pause the game (dev tool)
                 Time.timeScale = 0;
                 song.Pause();
-            } else if(Input.GetKeyDown("x")) {
+            } else if(Input.GetKeyDown("x")) { // Resume the game (dev tool)
                 Time.timeScale = 1;
                 song.UnPause();
-            } else if(Input.GetKeyDown("escape")) {
+            } else if(Input.GetKeyDown("escape")) { // Stop the level
                 EndRun();
                 GetComponent<AudioSource>().PlayOneShot(missSound, 1f);
             }
         }
 
         if(gameOver && !endPause) {
-            if(Input.GetKeyDown("return")) {
-                //song.clip = reset;
-                /*switch(GameInfo.menuIndex) {
-                    case 0:
-                        SceneManager.LoadScene("Normal");
-                        break;
-                    case 1:
-                        SceneManager.LoadScene("Hard");
-                        break;
-                }*/
+            if(Input.GetKeyDown("return")) { // Restart the level
                 SceneManager.LoadScene("Reset");
-            } else if(Input.GetKeyDown("escape")) {
+            } else if(Input.GetKeyDown("escape")) { // Go to the main menu
                 SceneManager.LoadScene("MainMenu");
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.GetComponent<Arrow>().direction == direction) {
+        if(other.GetComponent<Arrow>().direction == direction) { // Arrow successfully blocked
             Debug.Log("hit");
-            //paddle.GetComponent<Paddle>().Hit();
             GetComponent<AudioSource>().PlayOneShot(hitSound, 1f);
 
             curHealth++;
@@ -101,7 +86,7 @@ public class Heart : MonoBehaviour {
                 subStreak = 1;
             }
         	score += 25 * streak;
-        } else {
+        } else { // Arrow unsuccessfully blocked
             Debug.Log("miss");
             GetComponent<AudioSource>().PlayOneShot(missSound, 1f);
 
@@ -117,7 +102,7 @@ public class Heart : MonoBehaviour {
             subStreak = 0;
         }
 
-        if(curHealth == 0 && PlayerPrefs.GetInt("Invincible", 0) == 0) {
+        if(curHealth == 0 && PlayerPrefs.GetInt("Invincible", 0) == 0) { // Check if player is dead (out of health)
             EndRun();
         } else {
             other.GetComponent<Arrow>().ArrowHit();
@@ -127,29 +112,29 @@ public class Heart : MonoBehaviour {
         numBeats++;
         text.GetComponent<Text>().text = "" + numBeats;
 
-        if(numBeats == totalBeats - 1) {
+        if(numBeats == totalBeats - 1) { // End the level when the song is over
             arrowSpawner.GetComponent<ArrowSpawner>().StopArrows();
             Invoke("ShowEndMenu", 2f);
         }
     }
 
+    // End the level
     private void EndRun() {
-        //Time.timeScale = 0;
         song.Stop();
         arrowSpawner.GetComponent<ArrowSpawner>().StopArrows();
         foreach(GameObject arrowObj in GameObject.FindGameObjectsWithTag("Arrow")) {
             arrowObj.GetComponent<Arrow>().ArrowStop();
         }
-        //ShowEndMenu();
         endPause = true;
         Invoke("ShowEndMenu", 1f);
     }
 
+    // Show the end menu w/ high scores
     private void ShowEndMenu() {
         gameOver = true;
         endPause = false;
         yourScore.text = score + "";
-        if(score > PlayerPrefs.GetInt(difficulty, 0)) {
+        if(score > PlayerPrefs.GetInt(difficulty, 0)) { // New high score
             PlayerPrefs.SetInt(difficulty, score);
             newHighScore.enabled = true;
         }

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Reset : MonoBehaviour {
+    // Attached to a blank scene, which immediately loads one of the game scenes based on the menuIndex
+    // Used when restarting a level in order to properly reload the song and keep the timing consistent
     private void Start() {
         switch(GameInfo.menuIndex) {
             case 0:
